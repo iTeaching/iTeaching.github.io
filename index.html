@@ -25,8 +25,185 @@
                 <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
                     style="stroke: none; fill: #fff;"></path>
             </svg></div>
+
+            
     </header>
-    <main>
+    <main> 
+        <section class="contenedor sobre-nosotros">
+            <style type="text/css">
+                #sticky {
+                  position: sticky;
+                  z-index: 1;
+                  position: -webkit-sticky;
+                  background: #FFDD33;
+                  width:100%;
+                  height: 130px;
+                  top: 8.46%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  box-shadow: 0 0 6px #FFDD33;
+                  color: #fff;
+                  flex-direction: inherit;
+                  top: 6%;
+                  flex-direction: row;
+                  width: 100%;
+                  max-width: 100%;
+                }
+                
+                .cont-temporizador{
+                  color:black;
+                }
+                .bloque{
+                  height:250%; 
+                }
+                
+                
+                .cont-temporizador{
+                    display: flex;
+                    justify-content: center; 
+                    position: webkit-sticky; /* Safari */
+                    position: sticky;
+                    float: center;
+                }
+                  
+                .cont-temporizador .bloque{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin:5%;
+                }
+                
+                .cont-temporizador .bloque div{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #FFDD33;
+                    box-shadow: 0px 0px 0px 0px #000000;
+                    color: #ffffff;
+                    font-size: 40px;
+                    width: 60px;
+                    height: 50px;
+                    margin-bottom: 10px;
+                    border-radius: px;
+                }
+                  
+                .cont-temporizador .bloque p{
+                    font-size: 100%;
+                    font-weight: bold;
+                    color: #000000;
+                }
+                
+                @media screen and (max-width:1180px) {
+                  #sticky{
+                    height: 270px;
+                    
+                  }
+                  .heade a {
+                    float: none;
+                    display: block;
+                    text-align: left;
+                    text-align: center;
+                  }
+                  .cont-temporizador{
+                    float: none;
+                  }
+                }
+                
+                </style>
+                  <div id="sticky">
+                    <div class="test">
+                    <div class="text-anuncio">
+                        <br>
+                        <center><h2>LANZAMIENTO</h2></center>
+                    </div>
+                       <div class="cont-temporizador">
+                        <div class="bloque">
+                            <div class="dias" id="dias">--</div>
+                            <h3>DÍAS</h3>
+                        </div>
+                        <div class="bloque">
+                            <div class="horas" id="horas">--</div>
+                            <h3>HORAS</h3>
+                        </div>
+                        <div class="bloque">
+                            <div class="minutos" id="minutos">--</div>
+                            <h3>MINUTOS</h3>
+                        </div>
+                        <div class="bloque">
+                            <div class="segundos" id="segundos">--</div>
+                            <h3>SEGUNDOS</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <script>
+                const DATE_TARGET = new Date('06/03/2022 00:00');
+                // DOM for render
+                const SPAN_DAYS = document.querySelector('div#dias');
+                const SPAN_HOURS = document.querySelector('div#horas');
+                const SPAN_MINUTES = document.querySelector('div#minutos');
+                const SPAN_SECONDS = document.querySelector('div#segundos');
+                // Milliseconds for the calculations
+                const MILLISECONDS_OF_A_SECOND = 1000;
+                const MILLISECONDS_OF_A_MINUTE = MILLISECONDS_OF_A_SECOND * 60;
+                const MILLISECONDS_OF_A_HOUR = MILLISECONDS_OF_A_MINUTE * 60;
+                const MILLISECONDS_OF_A_DAY = MILLISECONDS_OF_A_HOUR * 24
+                
+                //===
+                // FUNCTIONS
+                //===
+                
+                /**
+                 * Method that updates the countdown and the sample
+                 */
+                function updateCountdown() {
+                    // Calcs
+                    const NOW = new Date()
+                    const DURATION = DATE_TARGET - NOW;
+                    const REMAINING_DAYS = Math.floor(DURATION / MILLISECONDS_OF_A_DAY);
+                    const REMAINING_HOURS = Math.floor((DURATION % MILLISECONDS_OF_A_DAY) / MILLISECONDS_OF_A_HOUR);
+                    const REMAINING_MINUTES = Math.floor((DURATION % MILLISECONDS_OF_A_HOUR) / MILLISECONDS_OF_A_MINUTE);
+                    const REMAINING_SECONDS = Math.floor((DURATION % MILLISECONDS_OF_A_MINUTE) / MILLISECONDS_OF_A_SECOND);
+                    // Thanks Pablo Monteserín (https://pablomonteserin.com/cuenta-regresiva/)
+                
+                    // Render
+                    SPAN_DAYS.textContent = REMAINING_DAYS;
+                    SPAN_HOURS.textContent = REMAINING_HOURS;
+                    SPAN_MINUTES.textContent = REMAINING_MINUTES;
+                    SPAN_SECONDS.textContent = REMAINING_SECONDS;
+                
+                    const targetDiv = document.getElementById("sticky");
+                
+                    if (REMAINING_DAYS <= 0 && REMAINING_HOURS <= 0 && REMAINING_MINUTES <= 0 && REMAINING_SECONDS <= 0 ){
+                    targetDiv.style.display = "none";
+                  }
+                  
+                }
+                
+                //===
+                // INIT
+                //===
+                updateCountdown();
+                // Refresh every second
+                setInterval(updateCountdown, MILLISECONDS_OF_A_SECOND);
+                
+                </script>
+                
+                <script>
+                const targetDiv = document.getElementById("sticky");
+                const btn = document.getElementById("toggle");
+                btn.onclick = function () {
+                  if (targetDiv.style.display !== "none") {
+                    targetDiv.style.display = "none";
+                  } else {
+                    targetDiv.style.display = "block";
+                  }
+                };
+                </script>
+                
+        </section>
         <section class="contenedor sobre-nosotros">
             <h2 class="titulo">Nuestro objetivo</h2>
             <div class="contenedor-sobre-nosotros">
