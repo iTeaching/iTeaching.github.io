@@ -16,6 +16,7 @@ body {
     overflow: hidden;
 }
 
+
 /* Header */
 
 header {
@@ -31,23 +32,115 @@ header {
 nav{
     text-align: right;
     padding: 30px 50px 0 0;
-
 }
 
+.nav_button:hover{
+	cursor: pointer
+}
+    
+.nav_button {
+  background: transparent; outline: none;
+  position: relative;
+  border: 2px solid #2F4858;
+  padding: 15px 20px;
+  overflow: hidden;
+  color: #2F4858;
+  margin-left: 20px;
+}
+
+/*button:before (attr data-hover)*/
+
+.nav_button:hover:before{
+	opacity: 1; 
+	transform: 
+	translate(0,0);
+}
+
+.nav_button:before{
+  content: attr(data-hover);
+  position: absolute;
+  top: 1.2em; left: 0;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 800;
+  font-size: 1em;
+  opacity: 0;
+  transform: translate(-100%,0);
+  transition: all .3s ease-in-out;
+}
+
+/*button div (button text before hover)*/
+  
+.nav_button:hover div{
+ opacity: 0;
+ transform: translate(100%,0);
+}
+ 
+.nav_button div{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
+    font-size: 1em;
+    transition: all .3s ease-in-out;
+ }
+
+/*
 nav > a{
-    color: orange;
+	margin-left: 15px;
+    color: white;
+    background: #2F4858;
     text-decoration: none;
-    border: 2px solid;
-    padding: 6px 16px;
-    border-radius: 30px;
+    padding: 10px 20px;
+    border-radius: 20px;
     font-weight: 600;
-    box-shadow: 0 0 1px;
+}
+*/
+
+.slider {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.slider ul{
+    display: flex;
+    animation: cambio 20s infinite alternate linear;
+    width: 500%;
+}
+.slider li{
+    width: 400%;
+    list-style: none;
+}
+
+.slider img{
+    width: 300%;
+    height: 300%;
+}
+
+@keyframes cambio{
+    0% {margin-left: 0;}
+    20% {margin-left:0;}
+
+    25% {margin-left: -100%;}
+    45% {margin-left:-100%;}
+
+    50% {margin-left: -200%;}
+    75% {margin-left:-200%;}
+
+    75% {margin-left: -300%;}
+    95% {margin-left:-300%;}
 }
 
 .eslogan{
-    font-size: 30px;
+	margin-top: 10px;
+    font-size: 32px;
     text-align: center;
-    color:black ;
+    color: #2F4858;
+}
+
+.logo{
+	margin-left: 50px;
 }
 
 .wave{
@@ -75,7 +168,7 @@ main .sobre-nosotros{
 }
 
 .contenido-textos h3 span{
-    background: #dab305;
+    background: #FFDD33;
     color: #fff;
     border-radius: 50%;
     display: inline-block;
@@ -133,7 +226,7 @@ main .sobre-nosotros{
     height: 100%;
     top: 0;
     transform: scale(0);
-    background: #dab305;
+    background: #FFDD33;
     transition: transform .8s;
     display: flex;
     justify-content: center;
@@ -150,13 +243,78 @@ main .sobre-nosotros{
     transform: scale(1);
 }
 .textos{
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
 }
 /* Suscripciones */
-.suscripciones{
+
+.columns {
+  float: left;
+  width: 33.3%;
+  padding: 8px;
 }
+
+.price {
+  list-style-type: none;
+  border: 1px solid #eee;
+  margin: 0;
+  padding: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.price:hover {
+  box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+
+.price .header {
+  background-color: #FFDD33;
+  color: white;
+  font-size: 25px;
+}
+
+.price li {
+  border-bottom: 1px solid #eee;
+  padding: 20px;
+  text-align: center;
+}
+
+.price .grey {
+  background-color: #eee;
+  font-size: 20px;
+}
+
+.hidden_text{
+	color: transparent;
+}
+
+.hidden_little_text{
+	font-size: 12px;
+	color: transparent;
+}
+
+.horas_mensuales{
+	font-size:12px;
+}
+
+.empieza_button {
+  background-color: #2F4858;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 600px) {
+  .columns {
+    width: 100%;
+  }
+}
+
 .titulo{
+	color: #2F4858;
     font-size: 30px;
     height: 60px;
     text-align: justify;
@@ -195,7 +353,7 @@ main .sobre-nosotros{
     height: 100%;
     top: 0;
     transform: scale(0);
-    background: #dab305;
+    background: #FFDD33;
     transition: transform .8s;
     display: flex;
     justify-content: center;
@@ -212,14 +370,14 @@ main .sobre-nosotros{
     transform: scale(1);
 }
 .textos{
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
 }
 
 /* footer */
 
 footer{
-    background: #dab305;
+    background: #FFDD33;
     padding: 60px 0 30px 0;
     margin: auto;
     overflow: hidden;
@@ -238,6 +396,24 @@ footer{
     color: #000000;
     font-size: 30px;
     content: "iteaching.sa@gmail.com​";
+}
+
+.footer-contact--facebook::after{
+    color: #000000;
+    font-size: 30px;
+    content: "iTeaching SA";
+}
+
+.footer-contact--instagram::after{
+    color: #000000;
+    font-size: 30px;
+    content: "@iteaching_oficial";
+}
+
+.footer-contact--twitter::after{
+    color: #000000;
+    font-size: 30px;
+    content: "@iTeaching_real​​";
 }
 
 .titulo-final{
@@ -321,6 +497,13 @@ footer{
         width: 95%;
     }
 
+/* Mi Perfil */
+
+.h3_bordered{
+	border: 1px solid #ffc107;
+}
+
+
 
     /* Footer */
 
@@ -333,7 +516,6 @@ footer{
         margin-bottom: 20px;
         text-align: center;
     }
-
     .content-foo h4{
         border: none;
     }
